@@ -31,22 +31,6 @@ function createFeatures(earthquakeData) {
   }
   });
 
-  //return color intensity based on earthquake magnitude
-  function getColor(d){
-    return d > 5 ? "#a54500":
-    d  > 4 ? "#cc5500":
-    d > 3 ? "#ff6f08":
-    d > 2 ? "#ff9143":
-    d > 1 ? "#ffb37e":
-             "#ffcca5";
-  }
-
-  //return earthquake radius * 25000 
-  function getRadius(value){
-    return value*25000
-  }
-
-  
   // Sending our earthquakes layer to the createMap function
   createMap(earthquakes);
 }
@@ -88,8 +72,8 @@ function createMap(earthquakes) {
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
-}
 
+  
   //Create a legend on the bottom right
   var legend = L.control({position: 'bottomright'});
 
@@ -108,3 +92,19 @@ function createMap(earthquakes) {
   };
 
   legend.addTo(myMap);
+}
+  
+//return color intensity based on earthquake magnitude
+  function getColor(d){
+    return d > 5 ? "#a54500":
+    d  > 4 ? "#cc5500":
+    d > 3 ? "#ff6f08":
+    d > 2 ? "#ff9143":
+    d > 1 ? "#ffb37e":
+             "#ffcca5";
+  }
+
+  //return earthquake radius * 25000 
+  function getRadius(value){
+    return value*25000
+  }
