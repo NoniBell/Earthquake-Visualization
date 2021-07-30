@@ -77,10 +77,10 @@ function createMap(earthquakes) {
   //Create a legend on the bottom right
   var legend = L.control({position: 'bottomright'});
 
-    legend.onAdd = function(myMap){
-      var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 1, 2, 3, 4, 5],
-        labels = [];
+  legend.onAdd = function(){
+    var div = L.DomUtil.create('div', 'info legend'),
+      grades = [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      labels = [];
 
   // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
@@ -95,14 +95,18 @@ function createMap(earthquakes) {
 }
   
 //return color intensity based on earthquake magnitude
-  function getColor(d){
-    return d > 5 ? "#a54500":
-    d  > 4 ? "#cc5500":
-    d > 3 ? "#ff6f08":
-    d > 2 ? "#ff9143":
-    d > 1 ? "#ffb37e":
-             "#ffcca5";
-  }
+function getColor(d) {
+  return d < 1 ? 'rgb(255,255,255)' :
+        d < 2  ? 'rgb(255,225,225)' :
+        d < 3  ? 'rgb(255,195,195)' :
+        d < 4  ? 'rgb(255,165,165)' :
+        d < 5  ? 'rgb(255,135,135)' :
+        d < 6  ? 'rgb(255,105,105)' :
+        d < 7  ? 'rgb(255,75,75)' :
+        d < 8  ? 'rgb(255,45,45)' :
+        d < 9  ? 'rgb(255,15,15)' :
+                    'rgb(255,0,0)';
+}
 
   //return earthquake radius * 25000 
   function getRadius(value){
